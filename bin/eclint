@@ -1,0 +1,12 @@
+#!/usr/bin/env node
+const fs = require('fs');
+const Engine = require('../lib/engine');
+
+fs.readFile('/config.json', function(err, data) {
+  let config;
+  if (!err) {
+    config = JSON.parse(data);
+  }
+
+  new Engine(config).run()
+});

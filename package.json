@@ -1,0 +1,29 @@
+{
+  "name": "codeclimate-eclint",
+  "version": "0.0.1",
+  "description": "eclint",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "eclint": "^2.0.1",
+    "glob": "^7.1.1",
+    "isbinaryfile": "^3.0.2",
+    "vinyl": "^2.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linuxbozo/codeclimate-eclint.git"
+  },
+  "author": "M. Adam Kendall",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/linuxbozo/codeclimate-eclint/issues"
+  },
+  "homepage": "https://github.com/linuxbozo/codeclimate-eclint#readme"
+}

@@ -1,0 +1,11 @@
+{
+  "name": "eclint",
+  "description": "EditorConfig linting utility",
+  "maintainer": {
+    "name": "M. Adam Kendall",
+    "email": "linuxbozo@gmail.com"
+  },
+  "languages" : ["*"],
+  "version": "<generated>",
+  "spec_version": "0.3.1"
+}
