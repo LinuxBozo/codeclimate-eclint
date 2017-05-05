@@ -1,0 +1,11 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: node:6.10
+    working_directory: ~/codeclimate-eclint
+    steps:
+      - checkout
+      - run: curl -o- -L https://yarnpkg.com/install.sh | bash
+      - run: yarn install
+      - run: npm test
