@@ -50,6 +50,7 @@ describe('Engine', () => {
       const paths = glob.sync(path.join(__dirname,'/fixtures/**/*'));
       const globExpected = [
         path.join(__dirname, '/fixtures/binary.dat'),
+        path.join(__dirname, '/fixtures/test_indent_size.js'),
         path.join(__dirname, '/fixtures/test_symlink.js'),
         path.join(__dirname, '/fixtures/test.js')
       ];
@@ -57,6 +58,7 @@ describe('Engine', () => {
 
       const expected = [
         path.join(__dirname, '/fixtures/binary.dat'),
+        path.join(__dirname, '/fixtures/test_indent_size.js'),
         path.join(__dirname, '/fixtures/test.js')
       ];
       const nonSymlinks = engine.prunePathsWithinSymlinks(paths);
@@ -66,8 +68,11 @@ describe('Engine', () => {
   });
 
   describe('#inclusionBasedFileListBuilder', () => {
-    it('should only contain a single path from whole fixtures path', (done) => {
-      const expected = [path.join(__dirname, '/fixtures/test.js')];
+    it('should only contain a two files from whole fixtures path', (done) => {
+      const expected = [
+        path.join(__dirname, '/fixtures/test_indent_size.js'),
+        path.join(__dirname, '/fixtures/test.js')
+      ];
       const includedPaths = engine.inclusionBasedFileListBuilder();
       assert.deepEqual(includedPaths, expected);
       done();
@@ -88,7 +93,7 @@ describe('Engine', () => {
       const includedPaths = engine.inclusionBasedFileListBuilder();
       assert.deepEqual(includedPaths, []);
     });
-    it('should contain one file when fed javascript file', () => {
+    it('should contain one file when fed single javascript file', () => {
       config = {
         include_paths: [path.join(__dirname, '/fixtures/test.js')]
       };
@@ -114,11 +119,29 @@ describe('Engine', () => {
       const oldLog = console.log;
       console.log = function (message) {
         let content = JSON.parse(message.replace(/\0/g, ''));
-        assert.equal(content.fingerprint, '23ca1cd56617e221a207d41e46a07777f1a8f3e31c73aafcba0a1d4fe63e9e70');
+        assert.equal(content.fingerprint, '20330fefe3c979047d8f672f69d3209dc89fb8384ffb649717700ec253af80a4');
         console.log = oldLog;
         done();
       };
       engine.run();
+    });
+    it('should return a no issue when no valid files included', (done) => {
+      config = {
+        include_paths: [path.join(__dirname, '/fixtures/binary.dat')]
+      };
+      engine = new Engine(config);
+      engine.run();
+      assert(!console.log.isCalled);
+      done();
+    });
+    it('should return a no issue when all files are valid', (done) => {
+      config = {
+        include_paths: [path.join(__dirname, '/fixtures/test.js')]
+      };
+      engine = new Engine(config);
+      engine.run();
+      assert(!console.log.isCalled);
+      done();
     });
   });
 
