@@ -10,6 +10,7 @@
     "eclint": "^2.0.1",
     "glob": "^7.1.1",
     "isbinaryfile": "^3.0.2",
+    "sha.js": "^2.4.8",
     "vinyl": "^2.0.2"
   },
   "devDependencies": {
