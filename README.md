@@ -1,4 +1,8 @@
 # Code Climage ECLint engine
+[![CircleCI](https://circleci.com/gh/LinuxBozo/codeclimate-eclint.svg?style=svg)](https://circleci.com/gh/LinuxBozo/codeclimate-eclint)
+[![Code Climate](https://codeclimate.com/github/LinuxBozo/codeclimate-eclint/badges/gpa.svg)](https://codeclimate.com/github/LinuxBozo/codeclimate-eclint)
+[![Test Coverage](https://codeclimate.com/github/LinuxBozo/codeclimate-eclint/badges/coverage.svg)](https://codeclimate.com/github/LinuxBozo/codeclimate-eclint/coverage)
+[![Issue Count](https://codeclimate.com/github/LinuxBozo/codeclimate-eclint/badges/issue_count.svg)](https://codeclimate.com/github/LinuxBozo/codeclimate-eclint)
 
 `codeclimate-eclint` is a Code Climate engine that wraps [ECLint][].
 

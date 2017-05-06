@@ -13,11 +13,14 @@
     "vinyl": "^2.0.2"
   },
   "devDependencies": {
-    "mocha": "^3.3.0"
+    "codeclimate-test-reporter": "^0.4.1",
+    "mocha": "^3.3.0",
+    "nyc": "^10.3.2"
   },
   "scripts": {
-    "test": "mocha -gc test",
-    "test.debug": "mocha -gc debug test"
+    "test": "nyc --reporter=lcov --reporter=text-summary --reporter=html mocha -gc test",
+    "test.debug": "nyc --reporter=lcov-only --reporter=text-summary --reporter=html mocha -gc debug test",
+    "codeclimate-coverage": "codeclimate-test-reporter < coverage/lcov.info"
   },
   "repository": {
     "type": "git",
