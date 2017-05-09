@@ -116,7 +116,7 @@ describe('Engine', () => {
     beforeEach(() => {
       iobuff = [];
     });
-    it('should return a single issue and have fingerprint', (done) => {
+    it('should return a single issue and have 64 char fingerprint', (done) => {
       config = {
         include_paths: [path.join(__dirname, '/fixtures/test_indent_size.js')]
       };
@@ -129,7 +129,7 @@ describe('Engine', () => {
         done();
       });
     });
-    it('should return multiple issues', (done) => {
+    it('should return multiple issues with unique fingerprints', (done) => {
       config = {
         include_paths: [path.join(__dirname, '/fixtures/test_multiple_issues.js')]
       };
@@ -140,6 +140,7 @@ describe('Engine', () => {
         let issue1 = JSON.parse(iobuff[1].replace(/\0/g, ''));
         assert.equal(issue0.check_name, 'trim_trailing_whitespace');
         assert.equal(issue1.check_name, 'indent_size');
+        assert.notEqual(issue0.fingerprint, issue1.fingerpint);
         done();
       });
     });
