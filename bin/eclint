@@ -8,5 +8,5 @@ fs.readFile('/config.json', function(err, data) {
     config = JSON.parse(data);
   }
 
-  new Engine(config).run()
+  new Engine(config, console.log).run().then(() => {});
 });
